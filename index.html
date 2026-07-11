@@ -656,18 +656,23 @@
 </head>
 <body>
 
+    <!-- Capa de Fondo Estática -->
     <div id="fixed-bg"></div>
 
+    <!-- Contenedor para las chispas dinámicas -->
     <div id="fireflies-container"></div>
 
+    <!-- Audio de Fondo -->
     <audio id="bg-music" src="assets/song.mp3" loop></audio>
 
+    <!-- Botón Sticky de Música -->
     <button id="music-btn" onclick="toggleMusic()" aria-label="Reproducir/Pausar Música">
         <svg viewBox="0 0 24 24">
             <path d="M8 5v14l11-7z"/>
         </svg>
     </button>
 
+    <!-- Pantalla del Sobre -->
     <div id="envelope-screen">
         <div class="envelope-wrapper" onclick="openEnvelope()">
             <div class="front-flap"></div>
@@ -682,10 +687,12 @@
         </div>
     </div>
 
+    <!-- Contenido de la Invitación Principal -->
     <main id="main-invitation">
         
         <div class="invitation-frame">
             <div class="lotus-header">
+                <!-- Corona / Estrella en lugar de flor de loto para dar toque distinto -->
                 <svg viewBox="0 0 24 24">
                     <path d="M5 16L3 5L8.5 10L12 4L15.5 10L21 5L19 16H5M19 19C19 19.55 18.55 20 18 20H6C5.45 20 5 19.55 5 19V18H19V19Z"/>
                 </svg>
@@ -698,13 +705,16 @@
                 "Hoy celebro el inicio de una nueva etapa, agradeciendo a Dios por la vida y a mi familia por acompañarme en cada paso del camino."
             </p>
 
+            <!-- Foto 1 -->
             <img src="assets/foto1.jpg" alt="Angel Issac" class="invitation-photo">
 
+            <!-- Sección de Fecha Principal -->
             <div class="info-block">
                 <div class="info-label">Fecha del Evento</div>
                 <div class="info-value-main" style="color: var(--main-primary);">12 de Septiembre</div>
             </div>
 
+            <!-- Cuenta Regresiva -->
             <div class="countdown-container">
                 <div class="countdown-box">
                     <div class="countdown-number" id="days">00</div>
@@ -724,6 +734,7 @@
                 </div>
             </div>
 
+            <!-- Widget Calendario (Septiembre 2026) -->
             <div class="calendar-container">
                 <div class="calendar-month">Septiembre</div>
                 <div class="calendar-grid">
@@ -778,49 +789,56 @@
 
             <div class="info-grid">
                 
+                <!-- Padres -->
                 <div class="info-block">
                     <div class="info-label">Con el amor de mi madre</div>
                     <div class="names-list">Yadira Isabel Velazquez Alonso</div>
                 </div>
 
+                <!-- Abuelos -->
                 <div class="info-block" style="margin-top: 15px;">
                     <div class="info-label">Y mis abuelos</div>
                     <div class="names-list">José Velazquez Ramirez</div>
                     <div class="names-list">Guadalupe Alonso Pineda</div>
                 </div>
 
+                <!-- Foto 2 -->
                 <img src="assets/foto2.jpg" alt="Angel Sesión" class="invitation-photo" style="margin-top: 30px;">
 
                 <div class="divider"></div>
 
+                <!-- Ceremonia Religiosa -->
                 <div class="info-block">
                     <div class="info-label">Ceremonia Religiosa</div>
-                    <div class="names-list">Av. México Manzana 007</div>
-                    <div class="names-list" style="font-size: 16px; margin-bottom: 5px;">Vergel de Guadalupe, Cdad. Nezahualcóyotl, Méx.</div>
+                    <div class="names-list">Parroquia María Reina Diocesis de Nezahualcoyotl</div>
+                    <div class="names-list" style="font-size: 16px; margin-bottom: 5px;">Av. México Manzana 007, Vergel de Guadalupe</div>
                     <div class="names-list" style="font-size: 20px; color: var(--main-primary); margin-bottom: 10px;">(Hora a definir)</div>
                     <div class="map-container">
-                        <iframe src="https://maps.app.goo.gl/3MAyQYkbKDFarCMq7" allowfullscreen="" loading="lazy"></iframe>
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3761.5741926459204!2d-99.05878249999999!3d19.473917099999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d1fb07f88625e1%3A0xda94f6734d7e622e!2sParroquia%20Mar%C3%ADa%20Reina%20Diosecis%20de%20Nezahualcoyotl%20A.R!5e0!3m2!1ses-419!2smx!4v1783813328640!5m2!1ses-419!2smx" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
                     </div>
                     <a href="https://maps.app.goo.gl/3MAyQYkbKDFarCMq7" target="_blank" class="btn-gold" style="width: auto;">Abrir en GPS</a>
                 </div>
 
                 <div class="divider"></div>
 
+                <!-- Recepción -->
                 <div class="info-block">
                     <div class="info-label">Recepción</div>
-                    <div class="names-list">Bosques de los Continentes 4</div>
-                    <div class="names-list" style="font-size: 16px; margin-bottom: 5px;">Bosques de Aragon, Cdad. Nezahualcóyotl, Méx.</div>
+                    <div class="names-list">Salón de Fiestas Terraza Mirage</div>
+                    <div class="names-list" style="font-size: 16px; margin-bottom: 5px;">Bosques de los Continentes 4, Bosques de Aragon</div>
                     <div class="names-list" style="font-size: 20px; color: var(--main-primary); margin-bottom: 10px;">(Hora a definir)</div>
                     <div class="map-container">
-                        <iframe src="https://maps.app.goo.gl/6YoP1y6W5z4MY3c6A" allowfullscreen="" loading="lazy"></iframe>
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3761.6234242540377!2d-99.0542028!3d19.4717963!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d1fb0889ab3cd3%3A0x5e4175974a6a486d!2sSal%C3%B3n%20de%20Fiestas%20Terraza%20Mirage!5e0!3m2!1ses-419!2smx!4v1783813368114!5m2!1ses-419!2smx" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
                     </div>
                     <a href="https://maps.app.goo.gl/6YoP1y6W5z4MY3c6A" target="_blank" class="btn-gold" style="width: auto;">Abrir en GPS</a>
                 </div>
 
+                <!-- Foto 3 -->
                 <img src="assets/foto3.jpg" alt="Angel Detalles" class="invitation-photo" style="margin-top: 30px;">
 
                 <div class="divider"></div>
 
+                <!-- Código de Vestimenta -->
                 <div class="info-block">
                     <div class="info-label">Código de Vestimenta</div>
                     <div class="info-value-main" style="font-size: 20px; margin-bottom: 10px;">Formal</div>
@@ -832,6 +850,7 @@
 
                 <div class="divider"></div>
 
+                <!-- Galería en Vivo -->
                 <div class="info-block">
                     <div class="info-label">Captura el Momento</div>
                     <svg viewBox="0 0 24 24" style="width: 45px; height: 45px; fill: var(--main-primary); margin: 10px 0; filter: drop-shadow(0 0 5px var(--magic-glow));">
@@ -848,12 +867,14 @@
 
                 <div class="divider"></div>
 
+                <!-- Frase Final -->
                 <p class="phrase" style="margin: 30px 0;">
                     <span class="phrase-bold">"Te invito a ser parte de esta noche inolvidable, compartiendo juntos risas, música y recuerdos que durarán para siempre."</span>
                 </p>
 
                 <div class="divider"></div>
 
+                <!-- SECCIÓN DE PASES DIGITALES CON BUSCADOR PRIVADO -->
                 <div class="info-block" id="pases-section">
                     <div class="info-label">Consulta tus Pases VIP</div>
                     <div style="font-family: 'Montserrat', sans-serif; font-size: 12px; color: var(--text-muted); margin-bottom: 15px;">Escribe tu nombre tal como aparece en tu invitación para descubrir tu boleto dorado.</div>
@@ -864,6 +885,7 @@
                         <div id="search-error" style="color: #ff6b6b; font-size: 12px; margin-top: 10px; display: none;">Nombre no encontrado. Intenta de nuevo.</div>
                     </div>
 
+                    <!-- Boleto Visual (Oculto por defecto) -->
                     <div id="ticket-container" style="display: none;">
                         <div class="digital-ticket">
                             <div class="ticket-header">
@@ -887,6 +909,7 @@
 
                 <div class="divider"></div>
 
+                <!-- Confirmación de Asistencia (RSVP) -->
                 <div class="info-block">
                     <div class="info-label">Confirmación de Asistencia</div>
                     <div style="font-family: 'Montserrat', sans-serif; font-size: 12px; color: var(--text-muted); margin-bottom: 15px;">Por favor, confirma tu asistencia lo antes posible.</div>
@@ -907,6 +930,7 @@
 
                 <div class="divider"></div>
 
+                <!-- Muro de Deseos -->
                 <div class="info-block">
                     <div class="info-label">Deja un mensaje para Angel</div>
                     <div class="form-container">
