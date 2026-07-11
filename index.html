@@ -1,0 +1,1161 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mis XV Años - Angel Issac</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Pinyon+Script&family=Montserrat:wght@300;400;500&family=Cormorant+Garamond:ital,wght@0,400;1,400;1,600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Paleta Negro y Rojo */
+            --bg-dark: #0a0303;
+            --bg-gradient: linear-gradient(135deg, #0a0303 0%, #170202 100%);
+            --main-primary: #d62828; /* Rojo vibrante/elegante */
+            --main-secondary: #9a031e; /* Rojo oscuro/vino */
+            --text-light: #f4f0e6;
+            --text-muted: #b5a6a6;
+            --magic-glow: rgba(214, 40, 40, 0.4);
+            --particle-glow: rgba(255, 77, 77, 0.6);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body, html {
+            width: 100%;
+            height: 100%;
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        /* Capa de Fondo Fija */
+        #fixed-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: url('assets/fondo.jpg') no-repeat center center;
+            background-size: cover;
+            z-index: 0;
+            opacity: 0;
+            transition: opacity 1.5s ease-out 0.6s;
+        }
+
+        body.content-active #fixed-bg {
+            opacity: 1;
+        }
+
+        /* Estilos del Sobre Animado */
+        #envelope-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--bg-gradient);
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: opacity 1.2s ease-in-out, visibility 1.2s;
+            overflow: hidden;
+        }
+
+        #envelope-screen.fade-out {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+
+        .envelope-wrapper {
+            position: relative;
+            cursor: pointer;
+            transform: scale(0.9);
+            transition: transform 0.5s ease;
+        }
+
+        .envelope-wrapper:hover {
+            transform: scale(0.95);
+        }
+
+        .envelope {
+            position: relative;
+            width: 340px;
+            height: 240px;
+            background: #140505;
+            border-radius: 0 0 8px 8px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.8);
+            border: 1px solid rgba(214, 40, 40, 0.2);
+        }
+
+        .envelope::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 0;
+            height: 0;
+            border-right: 170px solid #1f0707;
+            border-top: 120px solid transparent;
+            border-bottom: 120px solid #1f0707;
+            border-radius: 0 0 8px 0;
+            z-index: 2;
+        }
+
+        .envelope::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 0;
+            border-left: 170px solid #240808;
+            border-top: 120px solid transparent;
+            border-bottom: 120px solid #240808;
+            border-radius: 0 0 0 8px;
+            z-index: 2;
+        }
+
+        .front-flap {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 0;
+            border-left: 170px solid transparent;
+            border-right: 170px solid transparent;
+            border-top: 130px solid #2a0a0a;
+            transform-origin: top;
+            transition: transform 0.6s ease 0.2s;
+            z-index: 4;
+        }
+
+        .envelope-wrapper.open .front-flap {
+            transform: rotateX(180deg);
+            z-index: 1;
+        }
+
+        .wax-seal {
+            position: absolute;
+            top: 110px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 60px;
+            background: radial-gradient(circle, var(--main-primary) 0%, var(--main-secondary) 100%);
+            border-radius: 50%;
+            z-index: 5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.8), inset 0 2px 4px rgba(255,255,255,0.2);
+            transition: transform 0.4s ease, opacity 0.4s ease 0.4s;
+        }
+
+        .wax-seal svg {
+            width: 32px;
+            height: 32px;
+            fill: #fff;
+            opacity: 0.8;
+        }
+
+        .envelope-wrapper.open .wax-seal {
+            transform: translateX(-50%) scale(0);
+            opacity: 0;
+        }
+
+        .envelope-text {
+            position: absolute;
+            bottom: -50px;
+            width: 100%;
+            text-align: center;
+            font-family: 'Cinzel', serif;
+            font-size: 14px;
+            color: var(--main-primary);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.8);
+        }
+
+        .hint-text {
+            position: absolute;
+            bottom: -80px;
+            width: 100%;
+            text-align: center;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 11px;
+            color: var(--text-muted);
+            letter-spacing: 1px;
+            opacity: 0.7;
+            animation: pulse 2s infinite;
+        }
+
+        /* Contenido Principal */
+        #main-invitation {
+            min-height: 100vh;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 60px 20px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 1.5s ease-out 0.6s, transform 1.5s ease-out 0.6s;
+            z-index: 2;
+        }
+
+        body.content-active #main-invitation {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .invitation-frame {
+            max-width: 550px;
+            width: 100%;
+            border: 2px solid var(--main-primary);
+            padding: 40px 30px;
+            text-align: center;
+            position: relative;
+            background: rgba(10, 3, 3, 0.9); 
+            box-shadow: 0 0 50px rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(8px);
+            border-image: linear-gradient(to bottom, var(--main-primary), rgba(214,40,40,0.1), var(--main-primary)) 1;
+            margin-bottom: 40px;
+            z-index: 3;
+        }
+
+        .lotus-header { margin-bottom: 20px; }
+        .lotus-header svg {
+            width: 65px;
+            height: 65px;
+            fill: var(--main-primary);
+            filter: drop-shadow(0 0 8px var(--magic-glow));
+        }
+
+        .section-tag {
+            font-family: 'Cinzel', serif;
+            font-size: 12px;
+            letter-spacing: 5px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        .main-title {
+            font-family: 'Pinyon Script', cursive;
+            font-size: 58px;
+            color: var(--main-primary);
+            margin-bottom: 25px;
+            text-shadow: 0 2px 10px rgba(214, 40, 40, 0.4);
+            line-height: 1.1;
+        }
+
+        .phrase {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 18px;
+            color: var(--text-light);
+            line-height: 1.6;
+            margin-bottom: 30px;
+            padding: 0 15px;
+            opacity: 0.95;
+            font-style: italic;
+        }
+
+        .phrase-bold {
+            font-style: normal;
+            font-weight: 600;
+            color: var(--main-primary);
+            font-size: 17px;
+            margin-top: 15px;
+            display: block;
+        }
+
+        .divider {
+            width: 60px;
+            height: 1px;
+            background: linear-gradient(to right, transparent, var(--main-primary), transparent);
+            margin: 30px auto;
+        }
+
+        .info-block { margin-bottom: 25px; }
+
+        .info-label {
+            font-family: 'Cinzel', serif;
+            font-size: 11px;
+            letter-spacing: 3px;
+            color: var(--main-primary);
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        .info-value-main {
+            font-family: 'Cinzel', serif;
+            font-size: 24px;
+            font-weight: 600;
+            color: var(--text-light);
+            letter-spacing: 2px;
+        }
+
+        .names-list {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 22px;
+            color: var(--text-light);
+            margin: 5px 0;
+            letter-spacing: 1px;
+        }
+
+        /* Estilo para las fotos distribuidas */
+        .invitation-photo {
+            width: 100%;
+            height: auto;
+            border-radius: 6px;
+            border: 1px solid rgba(214, 40, 40, 0.4);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.8);
+            margin: 20px 0;
+            filter: grayscale(20%) contrast(110%);
+        }
+
+        /* Cuenta Regresiva */
+        .countdown-container {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .countdown-box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: rgba(214, 40, 40, 0.05);
+            border: 1px solid rgba(214, 40, 40, 0.3);
+            border-radius: 8px;
+            padding: 10px;
+            width: 65px;
+            box-shadow: inset 0 0 10px rgba(0,0,0,0.6);
+        }
+
+        .countdown-number {
+            font-family: 'Cinzel', serif;
+            font-size: 24px;
+            color: var(--main-primary);
+            font-weight: bold;
+        }
+
+        .countdown-label {
+            font-size: 10px;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin-top: 5px;
+            letter-spacing: 1px;
+        }
+
+        /* Calendario */
+        .calendar-container {
+            max-width: 300px;
+            margin: 0 auto 20px auto;
+            background: rgba(0,0,0,0.4);
+            padding: 15px;
+            border-radius: 10px;
+            border: 1px solid rgba(214, 40, 40, 0.2);
+        }
+
+        .calendar-month {
+            font-family: 'Cinzel', serif;
+            font-size: 16px;
+            color: var(--main-primary);
+            margin-bottom: 15px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 5px;
+            font-size: 13px;
+        }
+
+        .calendar-day-header {
+            color: var(--text-muted);
+            font-weight: bold;
+            padding-bottom: 5px;
+            border-bottom: 1px solid rgba(214, 40, 40, 0.2);
+        }
+
+        .calendar-day {
+            padding: 5px 0;
+            color: var(--text-light);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            aspect-ratio: 1;
+        }
+
+        .calendar-day.active {
+            background-color: var(--main-primary);
+            color: #fff;
+            border-radius: 50%;
+            font-weight: bold;
+            box-shadow: 0 0 15px var(--magic-glow);
+        }
+
+        .calendar-day.empty { color: transparent; }
+
+        /* Botones Generales */
+        .btn-gold {
+            display: inline-block;
+            background: transparent;
+            color: var(--main-primary);
+            border: 1px solid var(--main-primary);
+            padding: 12px 25px;
+            font-family: 'Cinzel', serif;
+            font-size: 12px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            text-decoration: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+            width: 100%;
+        }
+
+        .btn-gold:hover {
+            background: var(--main-primary);
+            color: #fff;
+            box-shadow: 0 0 15px var(--magic-glow);
+        }
+
+        /* Mapas */
+        .map-container {
+            width: 100%;
+            height: 250px;
+            margin-top: 15px;
+            margin-bottom: 15px;
+            border: 2px solid rgba(214, 40, 40, 0.3);
+            border-radius: 5px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+            filter: grayscale(80%) invert(90%) hue-rotate(180deg) contrast(120%);
+        }
+
+        /* Formularios */
+        .form-container {
+            margin-top: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 12px;
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(214, 40, 40, 0.4);
+            color: var(--text-light);
+            font-family: 'Montserrat', sans-serif;
+            border-radius: 4px;
+            outline: none;
+            transition: border 0.3s;
+        }
+
+        .form-input:focus {
+            border-color: var(--main-primary);
+        }
+
+        .form-input::placeholder {
+            color: rgba(181, 166, 166, 0.6);
+        }
+        
+        select.form-input option {
+            background: var(--bg-dark);
+            color: var(--text-light);
+            padding: 10px;
+        }
+
+        textarea.form-input {
+            resize: vertical;
+            min-height: 80px;
+        }
+
+        /* Ticket Digital Pase VIP */
+        .digital-ticket {
+            background: linear-gradient(135deg, #1f0707 0%, #120303 100%);
+            border: 1px solid var(--main-primary);
+            border-radius: 12px;
+            padding: 25px 15px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.9);
+            margin: 0 auto;
+            max-width: 320px;
+            animation: fadeInTicket 0.8s ease-out forwards;
+        }
+
+        @keyframes fadeInTicket {
+            from { opacity: 0; transform: scale(0.9) translateY(-10px); }
+            to { opacity: 1; transform: scale(1) translateY(0); }
+        }
+
+        .digital-ticket::before, .digital-ticket::after {
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            background: #0f0404; 
+            border-radius: 50%;
+            top: 50%;
+            transform: translateY(-50%);
+            border: 1px solid var(--main-primary);
+        }
+        .digital-ticket::before {
+            left: -20px;
+            border-left-color: transparent;
+            border-top-color: transparent;
+            border-bottom-color: transparent;
+        }
+        .digital-ticket::after {
+            right: -20px;
+            border-right-color: transparent;
+            border-top-color: transparent;
+            border-bottom-color: transparent;
+        }
+
+        .ticket-header {
+            font-family: 'Cinzel', serif;
+            font-size: 15px;
+            color: var(--text-muted);
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+            border-bottom: 1px dashed rgba(214, 40, 40, 0.3);
+            padding-bottom: 15px;
+        }
+
+        .ticket-body { padding: 10px 0; }
+
+        .ticket-footer {
+            font-size: 10px;
+            color: var(--main-secondary);
+            margin-top: 15px;
+            border-top: 1px dashed rgba(214, 40, 40, 0.3);
+            padding-top: 15px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* Chispas/Partículas Animadas (en lugar de luciérnagas) */
+        #fireflies-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            pointer-events: none;
+            z-index: 100;
+            overflow: hidden;
+        }
+
+        .firefly {
+            position: absolute;
+            background-color: #ff4d4d;
+            border-radius: 50%;
+            pointer-events: none;
+            box-shadow: 0 0 12px 3px var(--particle-glow);
+            animation: float-around infinite ease-in-out;
+            opacity: 0;
+        }
+
+        /* Sticky Music Button */
+        #music-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 55px;
+            height: 55px;
+            background: rgba(10, 3, 3, 0.85);
+            border: 2px solid var(--main-secondary);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            cursor: pointer;
+            box-shadow: 0 0 15px var(--magic-glow);
+            backdrop-filter: blur(5px);
+            transition: all 0.3s ease;
+            opacity: 0;
+            visibility: hidden;
+            transform: scale(0.8);
+        }
+
+        body.content-active #music-btn {
+            opacity: 1;
+            visibility: visible;
+            transform: scale(1);
+        }
+
+        #music-btn:hover {
+            background: rgba(214, 40, 40, 0.2);
+            transform: scale(1.1);
+        }
+
+        #music-btn svg {
+            width: 26px;
+            height: 26px;
+            fill: var(--main-primary);
+        }
+
+        /* Animaciones */
+        @keyframes pulse {
+            0% { opacity: 0.4; }
+            50% { opacity: 0.9; }
+            100% { opacity: 0.4; }
+        }
+
+        @keyframes float-around {
+            0% { transform: translateY(0) translateX(0) scale(0.5); opacity: 0; }
+            10% { opacity: 0.8; }
+            90% { opacity: 0.8; }
+            100% { transform: translateY(-100vh) translateX(30px) scale(1.2); opacity: 0; }
+        }
+
+        /* Responsivo */
+        @media (max-width: 400px) {
+            .envelope { width: 290px; height: 210px; }
+            .envelope::before { border-right-width: 145px; border-top-width: 105px; border-bottom-width: 105px; }
+            .envelope::after { border-left-width: 145px; border-top-width: 105px; border-bottom-width: 105px; }
+            .front-flap { border-left-width: 145px; border-right-width: 145px; border-top-width: 115px; }
+            .wax-seal { top: 95px; }
+            .main-title { font-size: 48px; }
+            .invitation-frame { padding: 30px 15px; }
+            .names-list { font-size: 20px; }
+            .countdown-box { width: 55px; }
+            .countdown-number { font-size: 20px; }
+            #music-btn { bottom: 20px; right: 20px; width: 45px; height: 45px; }
+            #music-btn svg { width: 20px; height: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="fixed-bg"></div>
+
+    <div id="fireflies-container"></div>
+
+    <audio id="bg-music" src="assets/song.mp3" loop></audio>
+
+    <button id="music-btn" onclick="toggleMusic()" aria-label="Reproducir/Pausar Música">
+        <svg viewBox="0 0 24 24">
+            <path d="M8 5v14l11-7z"/>
+        </svg>
+    </button>
+
+    <div id="envelope-screen">
+        <div class="envelope-wrapper" onclick="openEnvelope()">
+            <div class="front-flap"></div>
+            <div class="wax-seal">
+                <svg viewBox="0 0 24 24">
+                    <path d="M12 2L15 9H22L16.5 13.5L18.5 21L12 17L5.5 21L7.5 13.5L2 9H9L12 2Z"/>
+                </svg>
+            </div>
+            <div class="envelope"></div>
+            <div class="envelope-text">Mis XV Años<br><span style="color: #fff; font-size: 16px; letter-spacing: 5px;">Angel Issac</span></div>
+            <div class="hint-text">Toca el sello para abrir</div>
+        </div>
+    </div>
+
+    <main id="main-invitation">
+        
+        <div class="invitation-frame">
+            <div class="lotus-header">
+                <svg viewBox="0 0 24 24">
+                    <path d="M5 16L3 5L8.5 10L12 4L15.5 10L21 5L19 16H5M19 19C19 19.55 18.55 20 18 20H6C5.45 20 5 19.55 5 19V18H19V19Z"/>
+                </svg>
+            </div>
+
+            <div class="section-tag">Mis XV Años</div>
+            <h1 class="main-title">Angel Issac</h1>
+            
+            <p class="phrase">
+                "Hoy celebro el inicio de una nueva etapa, agradeciendo a Dios por la vida y a mi familia por acompañarme en cada paso del camino."
+            </p>
+
+            <img src="assets/foto1.jpg" alt="Angel Issac" class="invitation-photo">
+
+            <div class="info-block">
+                <div class="info-label">Fecha del Evento</div>
+                <div class="info-value-main" style="color: var(--main-primary);">12 de Septiembre</div>
+            </div>
+
+            <div class="countdown-container">
+                <div class="countdown-box">
+                    <div class="countdown-number" id="days">00</div>
+                    <div class="countdown-label">Días</div>
+                </div>
+                <div class="countdown-box">
+                    <div class="countdown-number" id="hours">00</div>
+                    <div class="countdown-label">Hrs</div>
+                </div>
+                <div class="countdown-box">
+                    <div class="countdown-number" id="minutes">00</div>
+                    <div class="countdown-label">Min</div>
+                </div>
+                <div class="countdown-box">
+                    <div class="countdown-number" id="seconds">00</div>
+                    <div class="countdown-label">Seg</div>
+                </div>
+            </div>
+
+            <div class="calendar-container">
+                <div class="calendar-month">Septiembre</div>
+                <div class="calendar-grid">
+                    <div class="calendar-day-header">D</div>
+                    <div class="calendar-day-header">L</div>
+                    <div class="calendar-day-header">M</div>
+                    <div class="calendar-day-header">M</div>
+                    <div class="calendar-day-header">J</div>
+                    <div class="calendar-day-header">V</div>
+                    <div class="calendar-day-header">S</div>
+                    
+                    <div class="calendar-day empty"></div>
+                    <div class="calendar-day empty"></div>
+                    <div class="calendar-day">1</div>
+                    <div class="calendar-day">2</div>
+                    <div class="calendar-day">3</div>
+                    <div class="calendar-day">4</div>
+                    <div class="calendar-day">5</div>
+                    <div class="calendar-day">6</div>
+                    <div class="calendar-day">7</div>
+                    <div class="calendar-day">8</div>
+                    <div class="calendar-day">9</div>
+                    <div class="calendar-day">10</div>
+                    <div class="calendar-day">11</div>
+                    <div class="calendar-day active">12</div>
+                    <div class="calendar-day">13</div>
+                    <div class="calendar-day">14</div>
+                    <div class="calendar-day">15</div>
+                    <div class="calendar-day">16</div>
+                    <div class="calendar-day">17</div>
+                    <div class="calendar-day">18</div>
+                    <div class="calendar-day">19</div>
+                    <div class="calendar-day">20</div>
+                    <div class="calendar-day">21</div>
+                    <div class="calendar-day">22</div>
+                    <div class="calendar-day">23</div>
+                    <div class="calendar-day">24</div>
+                    <div class="calendar-day">25</div>
+                    <div class="calendar-day">26</div>
+                    <div class="calendar-day">27</div>
+                    <div class="calendar-day">28</div>
+                    <div class="calendar-day">29</div>
+                    <div class="calendar-day">30</div>
+                </div>
+            </div>
+
+            <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=XV+A%C3%B1os+de+Angel+Issac&dates=20260912T200000Z/20260913T040000Z&details=Celebremos+juntos+este+d%C3%ADa+tan+especial" target="_blank" class="btn-gold" style="width: auto;">
+                Agregar al Calendario
+            </a>
+
+            <div class="divider"></div>
+
+            <div class="info-grid">
+                
+                <div class="info-block">
+                    <div class="info-label">Con el amor de mi madre</div>
+                    <div class="names-list">Yadira Isabel Velazquez Alonso</div>
+                </div>
+
+                <div class="info-block" style="margin-top: 15px;">
+                    <div class="info-label">Y mis abuelos</div>
+                    <div class="names-list">José Velazquez Ramirez</div>
+                    <div class="names-list">Guadalupe Alonso Pineda</div>
+                </div>
+
+                <img src="assets/foto2.jpg" alt="Angel Sesión" class="invitation-photo" style="margin-top: 30px;">
+
+                <div class="divider"></div>
+
+                <div class="info-block">
+                    <div class="info-label">Ceremonia Religiosa</div>
+                    <div class="names-list">Av. México Manzana 007</div>
+                    <div class="names-list" style="font-size: 16px; margin-bottom: 5px;">Vergel de Guadalupe, Cdad. Nezahualcóyotl, Méx.</div>
+                    <div class="names-list" style="font-size: 20px; color: var(--main-primary); margin-bottom: 10px;">(Hora a definir)</div>
+                    <div class="map-container">
+                        <iframe src="https://maps.app.goo.gl/3MAyQYkbKDFarCMq7" allowfullscreen="" loading="lazy"></iframe>
+                    </div>
+                    <a href="https://maps.app.goo.gl/3MAyQYkbKDFarCMq7" target="_blank" class="btn-gold" style="width: auto;">Abrir en GPS</a>
+                </div>
+
+                <div class="divider"></div>
+
+                <div class="info-block">
+                    <div class="info-label">Recepción</div>
+                    <div class="names-list">Bosques de los Continentes 4</div>
+                    <div class="names-list" style="font-size: 16px; margin-bottom: 5px;">Bosques de Aragon, Cdad. Nezahualcóyotl, Méx.</div>
+                    <div class="names-list" style="font-size: 20px; color: var(--main-primary); margin-bottom: 10px;">(Hora a definir)</div>
+                    <div class="map-container">
+                        <iframe src="https://maps.app.goo.gl/6YoP1y6W5z4MY3c6A" allowfullscreen="" loading="lazy"></iframe>
+                    </div>
+                    <a href="https://maps.app.goo.gl/6YoP1y6W5z4MY3c6A" target="_blank" class="btn-gold" style="width: auto;">Abrir en GPS</a>
+                </div>
+
+                <img src="assets/foto3.jpg" alt="Angel Detalles" class="invitation-photo" style="margin-top: 30px;">
+
+                <div class="divider"></div>
+
+                <div class="info-block">
+                    <div class="info-label">Código de Vestimenta</div>
+                    <div class="info-value-main" style="font-size: 20px; margin-bottom: 10px;">Formal</div>
+                    <div style="font-family: 'Montserrat', sans-serif; font-size: 14px; color: var(--text-light); margin-bottom: 8px;">Con sombrero y botas vaqueras.</div>
+                    <div style="font-family: 'Montserrat', sans-serif; font-size: 12px; color: var(--text-muted); padding: 0 10px; line-height: 1.5;">
+                        (Favor de reservar el color <span style="color: var(--main-primary); font-weight: 500;">Rojo</span> para el vestido de las damas y el traje <span style="color: #fff; font-weight: 500;">Negro con Rojo</span> para el quinceañero).
+                    </div>
+                </div>
+
+                <div class="divider"></div>
+
+                <div class="info-block">
+                    <div class="info-label">Captura el Momento</div>
+                    <svg viewBox="0 0 24 24" style="width: 45px; height: 45px; fill: var(--main-primary); margin: 10px 0; filter: drop-shadow(0 0 5px var(--magic-glow));">
+                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2zm16 2H4v1.97l8 4.66 8-4.66V6zm0 12v-8.46l-8 4.66-8-4.66V18h16z"/>
+                    </svg>
+                    <div class="info-value-main" style="font-size: 18px; margin-bottom: 8px;">Galería en Vivo</div>
+                    <div style="font-family: 'Montserrat', sans-serif; font-size: 12px; color: var(--text-muted); padding: 0 10px; margin-bottom: 15px;">
+                        Ayúdanos a conservar los mejores recuerdos de este día. Sube las fotos y videos que tomes durante el evento a nuestra carpeta compartida.
+                    </div>
+                    <a href="https://drive.google.com/drive/folders/1_BRX4-7DUhv64sD2PqSMHL__PuvSMfOH?usp=sharing" target="_blank" class="btn-gold" style="width: auto;">
+                        Subir mis Fotos
+                    </a>
+                </div>
+
+                <div class="divider"></div>
+
+                <p class="phrase" style="margin: 30px 0;">
+                    <span class="phrase-bold">"Te invito a ser parte de esta noche inolvidable, compartiendo juntos risas, música y recuerdos que durarán para siempre."</span>
+                </p>
+
+                <div class="divider"></div>
+
+                <div class="info-block" id="pases-section">
+                    <div class="info-label">Consulta tus Pases VIP</div>
+                    <div style="font-family: 'Montserrat', sans-serif; font-size: 12px; color: var(--text-muted); margin-bottom: 15px;">Escribe tu nombre tal como aparece en tu invitación para descubrir tu boleto dorado.</div>
+                    
+                    <div class="form-container" style="margin-bottom: 25px;">
+                        <input type="text" id="guest-search" class="form-input" placeholder="Ej. Familia Velazquez" onkeypress="if(event.key === 'Enter') searchPasses();">
+                        <button onclick="searchPasses()" class="btn-gold">Buscar mis pases</button>
+                        <div id="search-error" style="color: #ff6b6b; font-size: 12px; margin-top: 10px; display: none;">Nombre no encontrado. Intenta de nuevo.</div>
+                    </div>
+
+                    <div id="ticket-container" style="display: none;">
+                        <div class="digital-ticket">
+                            <div class="ticket-header">
+                                <svg viewBox="0 0 24 24" style="width: 20px; height: 20px; fill: var(--main-primary); vertical-align: bottom; margin-right: 5px;"><path d="M12 2L15 9H22L16.5 13.5L18.5 21L12 17L5.5 21L7.5 13.5L2 9H9L12 2Z"/></svg>
+                                Pase Digital VIP
+                                <svg viewBox="0 0 24 24" style="width: 20px; height: 20px; fill: var(--main-primary); vertical-align: bottom; margin-left: 5px;"><path d="M12 2L15 9H22L16.5 13.5L18.5 21L12 17L5.5 21L7.5 13.5L2 9H9L12 2Z"/></svg>
+                            </div>
+                            
+                            <div class="ticket-body">
+                                <div id="ticket-name" style="font-family: 'Cinzel', serif; font-size: 18px; color: var(--main-primary); margin-bottom: 15px; font-weight: bold; letter-spacing: 1px;"></div>
+                                <div style="font-family: 'Montserrat', sans-serif; font-size: 11px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 8px;">Pases Asignados</div>
+                                <div id="ticket-count" style="font-family: 'Cinzel', serif; font-weight: 700; font-size: 40px; color: #fff; line-height: 1; text-shadow: 0 0 10px var(--magic-glow);"></div>
+                            </div>
+                            
+                            <div class="ticket-footer">
+                                Toma captura de pantalla y presenta este pase al llegar al evento
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="divider"></div>
+
+                <div class="info-block">
+                    <div class="info-label">Confirmación de Asistencia</div>
+                    <div style="font-family: 'Montserrat', sans-serif; font-size: 12px; color: var(--text-muted); margin-bottom: 15px;">Por favor, confirma tu asistencia lo antes posible.</div>
+                    <div class="form-container">
+                        <input type="text" id="rsvp-name" class="form-input" placeholder="Escribe tu nombre completo">
+                        
+                        <select id="rsvp-status" class="form-input" onchange="toggleGuestInput()">
+                            <option value="">¿Asistirás al evento?</option>
+                            <option value="yes">Sí, ahí estaré</option>
+                            <option value="no">Lamentablemente no podré asistir</option>
+                        </select>
+                        
+                        <input type="number" id="rsvp-guests" class="form-input" placeholder="¿Cuántas personas asistirán?" min="1" style="display: none;">
+                        
+                        <button onclick="sendRSVP()" class="btn-gold">Confirmar por WhatsApp</button>
+                    </div>
+                </div>
+
+                <div class="divider"></div>
+
+                <div class="info-block">
+                    <div class="info-label">Deja un mensaje para Angel</div>
+                    <div class="form-container">
+                        <input type="text" id="wish-name" class="form-input" placeholder="Tu Nombre">
+                        <textarea id="wish-message" class="form-input" placeholder="Escribe tus buenos deseos para el quinceañero..."></textarea>
+                        <button onclick="sendWish()" class="btn-gold">Enviar Mensaje</button>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="divider"></div>
+            
+            <div style="font-family: 'Cinzel', serif; font-size: 11px; letter-spacing: 2px; color: var(--main-secondary); margin-top: 20px;">
+                INVYTIA PREMIUM PREVIEW
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Lógica de Audio
+        const bgMusic = document.getElementById('bg-music');
+        const musicBtn = document.getElementById('music-btn');
+        let isMusicPlaying = false;
+
+        const playIcon = '<svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>';
+        const pauseIcon = '<svg viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>';
+
+        function toggleMusic() {
+            if (isMusicPlaying) {
+                bgMusic.pause();
+                musicBtn.innerHTML = playIcon;
+            } else {
+                bgMusic.play();
+                musicBtn.innerHTML = pauseIcon;
+            }
+            isMusicPlaying = !isMusicPlaying;
+        }
+
+        function openEnvelope() {
+            const wrapper = document.querySelector('.envelope-wrapper');
+            const screen = document.getElementById('envelope-screen');
+            
+            wrapper.classList.add('open');
+            
+            setTimeout(() => {
+                screen.classList.add('fade-out');
+                document.body.classList.add('content-active');
+                createFireflies();
+                
+                bgMusic.play().then(() => {
+                    isMusicPlaying = true;
+                    musicBtn.innerHTML = pauseIcon;
+                }).catch(err => {
+                    console.log("Autoplay bloqueado. El usuario debe darle play manualmente.");
+                    isMusicPlaying = false;
+                    musicBtn.innerHTML = playIcon;
+                });
+            }, 1200);
+        }
+
+        // Sistema de Partículas/Chispas (Color Rojo)
+        function createFireflies() {
+            const container = document.getElementById('fireflies-container');
+            const count = 30; 
+            
+            for (let i = 0; i < count; i++) {
+                const firefly = document.createElement('div');
+                firefly.classList.add('firefly');
+                
+                const size = Math.random() * 4 + 2;
+                const left = Math.random() * 100;
+                const animDuration = Math.random() * 8 + 6;
+                const animDelay = Math.random() * 6;
+                
+                firefly.style.width = `${size}px`;
+                firefly.style.height = `${size}px`;
+                firefly.style.left = `${left}%`;
+                firefly.style.bottom = `-20px`;
+                firefly.style.animationDuration = `${animDuration}s`;
+                firefly.style.animationDelay = `${animDelay}s`;
+                
+                container.appendChild(firefly);
+            }
+        }
+
+        // Lógica de Cuenta Regresiva (12 de Septiembre 2026, asumiendo 15:00:00 - Ajusta la hora si es necesario)
+        const eventDate = new Date("2026/09/12 15:00:00").getTime();
+
+        const countdownInterval = setInterval(() => {
+            const now = new Date().getTime();
+            const distance = eventDate - now;
+
+            if (distance < 0) {
+                clearInterval(countdownInterval);
+                document.getElementById("days").innerText = "00";
+                document.getElementById("hours").innerText = "00";
+                document.getElementById("minutes").innerText = "00";
+                document.getElementById("seconds").innerText = "00";
+                return;
+            }
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById("days").innerText = days < 10 ? "0" + days : days;
+            document.getElementById("hours").innerText = hours < 10 ? "0" + hours : hours;
+            document.getElementById("minutes").innerText = minutes < 10 ? "0" + minutes : minutes;
+            document.getElementById("seconds").innerText = seconds < 10 ? "0" + seconds : seconds;
+        }, 1000);
+
+        // --- SISTEMA DE PASES DIGITALES (BUSCADOR) ---
+        // IMPORTANTE: Aquí debes pegar tu nueva lista de invitados para Angel Issac. Dejo algunos de ejemplo.
+        const guestData = {
+            "Familia Velazquez": 4, 
+            "Familia Calderón": 5, 
+            "Padrinos de Velación": 2, 
+            "Tia Mary": 2, 
+            "Jose Velazquez": 2,
+            "Guadalupe Alonso": 2
+        };
+
+        // Función para quitar acentos y normalizar texto
+        function normalizeString(str) {
+            return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().trim();
+        }
+
+        // Mostrar Pases y Animar Ticket
+        function searchPasses() {
+            const searchInput = document.getElementById("guest-search").value;
+            const errorMsg = document.getElementById("search-error");
+            const container = document.getElementById("ticket-container");
+            const nameEl = document.getElementById("ticket-name");
+            const countEl = document.getElementById("ticket-count");
+            const ticketElement = document.querySelector(".digital-ticket");
+
+            if (searchInput.length < 2) {
+                errorMsg.style.display = "block";
+                errorMsg.textContent = "Por favor, escribe un nombre válido.";
+                container.style.display = "none";
+                return;
+            }
+
+            const normalizedInput = normalizeString(searchInput);
+            let foundName = null;
+            let foundPasses = 0;
+
+            // 1. Intentar coincidencia exacta
+            for (const [name, passes] of Object.entries(guestData)) {
+                if (normalizeString(name) === normalizedInput) {
+                    foundName = name;
+                    foundPasses = passes;
+                    break;
+                }
+            }
+
+            // 2. Si no es exacta, intentar encontrar si parte del nombre coincide
+            if (!foundName) {
+                const matches = [];
+                for (const [name, passes] of Object.entries(guestData)) {
+                    if (normalizeString(name).includes(normalizedInput)) {
+                        matches.push({name, passes});
+                    }
+                }
+                
+                if (matches.length === 1) {
+                    foundName = matches[0].name;
+                    foundPasses = matches[0].passes;
+                }
+            }
+            
+            if (foundName) {
+                errorMsg.style.display = "none";
+                nameEl.textContent = foundName;
+                countEl.textContent = foundPasses + (foundPasses == 1 ? " PASE" : " PASES");
+                
+                container.style.display = "block";
+                
+                // Reiniciar animación
+                ticketElement.style.animation = 'none';
+                ticketElement.offsetHeight; // trigger reflow
+                ticketElement.style.animation = null; 
+            } else {
+                errorMsg.style.display = "block";
+                errorMsg.textContent = "No encontramos este nombre. Intenta con un solo nombre y tu primer apellido.";
+                container.style.display = "none";
+            }
+        }
+
+        // Mostrar/Ocultar campo de cantidad de personas
+        function toggleGuestInput() {
+            const status = document.getElementById("rsvp-status").value;
+            const guestInput = document.getElementById("rsvp-guests");
+            
+            if (status === "yes") {
+                guestInput.style.display = "block";
+            } else {
+                guestInput.style.display = "none";
+                guestInput.value = ""; // Limpiar si selecciona no
+            }
+        }
+
+        // Envío de WhatsApp - RSVP
+        function sendRSVP() {
+            const name = document.getElementById("rsvp-name").value.trim();
+            const status = document.getElementById("rsvp-status").value;
+            const guests = document.getElementById("rsvp-guests").value.trim();
+            
+            if (name === "") {
+                alert("Por favor, ingresa tu nombre completo.");
+                return;
+            }
+            
+            if (status === "") {
+                alert("Por favor, selecciona si asistirás o no.");
+                return;
+            }
+
+            let message = "";
+            
+            if (status === "yes") {
+                if (guests === "" || parseInt(guests) < 1) {
+                    alert("Por favor, ingresa un número válido de personas que asistirán.");
+                    return;
+                }
+                message = encodeURIComponent(`¡Hola! Soy ${name}. Sí, confirmo mi asistencia a los XV años de Angel Issac. Asistiremos ${guests} personas de las asignadas a nuestro pase.`);
+            } else {
+                message = encodeURIComponent(`¡Hola! Soy ${name}. Lamentablemente no podré asistir a los XV años de Angel Issac. ¡Muchas gracias por la invitación!`);
+            }
+
+            const phone = "525533431579";
+            window.open(`https://wa.me/${phone}?text=${message}`, '_blank');
+        }
+
+        // Envío de WhatsApp - Muro de Deseos
+        function sendWish() {
+            const name = document.getElementById("wish-name").value.trim();
+            const wish = document.getElementById("wish-message").value.trim();
+            
+            if (name === "" || wish === "") {
+                alert("Por favor, ingresa tu nombre y un mensaje.");
+                return;
+            }
+            const phone = "525533431579";
+            const message = encodeURIComponent(`Hola Angel, soy ${name}. Te dejo este mensaje con mucho cariño:\n\n"${wish}"`);
+            window.open(`https://wa.me/${phone}?text=${message}`, '_blank');
+        }
+    </script>
+</body>
+</html>
