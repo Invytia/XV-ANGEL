@@ -10,10 +10,10 @@
             /* Paleta Negro y Rojo */
             --bg-dark: #0a0303;
             --bg-gradient: linear-gradient(135deg, #0a0303 0%, #170202 100%);
-            --main-primary: #d62828; /* Rojo vibrante/elegante */
-            --main-secondary: #9a031e; /* Rojo oscuro/vino */
-            --text-light: #ffffff; /* Blanco puro para mejor contraste */
-            --text-muted: #d4c5c5; /* Gris claro para lectura suave */
+            --main-primary: #d62828; 
+            --main-secondary: #9a031e; 
+            --text-light: #ffffff; 
+            --text-muted: #d4c5c5; 
             --magic-glow: rgba(214, 40, 40, 0.5);
             --particle-glow: rgba(255, 77, 77, 0.7);
         }
@@ -90,7 +90,7 @@
             position: relative;
             width: 340px;
             height: 240px;
-            background: #4a0808; /* Base roja media */
+            background: #4a0808; 
             border-radius: 0 0 8px 8px;
             box-shadow: 0 20px 40px rgba(0,0,0,0.9);
             border: 1px solid rgba(255, 77, 77, 0.3);
@@ -103,7 +103,7 @@
             right: 0;
             width: 0;
             height: 0;
-            border-right: 170px solid #7a0d0d; /* Solapa derecha más clara */
+            border-right: 170px solid #7a0d0d; 
             border-top: 120px solid transparent;
             border-bottom: 120px solid #7a0d0d;
             border-radius: 0 0 8px 0;
@@ -117,7 +117,7 @@
             left: 0;
             width: 0;
             height: 0;
-            border-left: 170px solid #8c0f0f; /* Solapa izquierda iluminada */
+            border-left: 170px solid #8c0f0f; 
             border-top: 120px solid transparent;
             border-bottom: 120px solid #8c0f0f;
             border-radius: 0 0 0 8px;
@@ -132,7 +132,7 @@
             height: 0;
             border-left: 170px solid transparent;
             border-right: 170px solid transparent;
-            border-top: 130px solid #a31212; /* Solapa superior muy vibrante */
+            border-top: 130px solid #a31212; 
             transform-origin: top;
             transition: transform 0.6s ease 0.2s;
             z-index: 4;
@@ -226,7 +226,6 @@
             padding: 45px 30px;
             text-align: center;
             position: relative;
-            /* Cristal más oscuro/sólido para máximo contraste de letras */
             background: rgba(10, 3, 3, 0.95); 
             box-shadow: 0 0 50px rgba(0, 0, 0, 0.9);
             backdrop-filter: blur(10px);
@@ -255,7 +254,7 @@
 
         .main-title {
             font-family: 'Pinyon Script', cursive;
-            font-size: 68px; /* Título más grande */
+            font-size: 68px; 
             color: var(--main-primary);
             margin-bottom: 30px;
             text-shadow: 0 2px 10px rgba(214, 40, 40, 0.6);
@@ -264,7 +263,7 @@
 
         .phrase {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 21px; /* Letra de frase más grande */
+            font-size: 21px; 
             color: var(--text-light);
             line-height: 1.6;
             margin-bottom: 35px;
@@ -293,7 +292,7 @@
 
         .info-label {
             font-family: 'Cinzel', serif;
-            font-size: 14px; /* Etiquetas más legibles */
+            font-size: 14px; 
             letter-spacing: 3px;
             color: var(--main-primary);
             text-transform: uppercase;
@@ -303,7 +302,7 @@
 
         .info-value-main {
             font-family: 'Cinzel', serif;
-            font-size: 28px; /* Fechas y valores fuertes más grandes */
+            font-size: 28px; 
             font-weight: 700;
             color: var(--text-light);
             letter-spacing: 2px;
@@ -311,7 +310,7 @@
 
         .names-list {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 25px; /* Nombres más grandes */
+            font-size: 25px; 
             color: var(--text-light);
             margin: 8px 0;
             letter-spacing: 1px;
@@ -324,7 +323,6 @@
             margin-bottom: 5px;
         }
 
-        /* Estilo para las fotos distribuidas */
         .invitation-photo {
             width: 100%;
             height: auto;
@@ -395,7 +393,7 @@
             display: grid;
             grid-template-columns: repeat(7, 1fr);
             gap: 6px;
-            font-size: 15px; /* Números de calendario más grandes */
+            font-size: 15px; 
         }
 
         .calendar-day-header {
@@ -432,7 +430,7 @@
             border: 2px solid var(--main-primary);
             padding: 14px 25px;
             font-family: 'Cinzel', serif;
-            font-size: 14px; /* Letra de botones más grande */
+            font-size: 14px; 
             font-weight: 600;
             letter-spacing: 2px;
             text-transform: uppercase;
@@ -487,7 +485,7 @@
             border: 1px solid rgba(214, 40, 40, 0.5);
             color: var(--text-light);
             font-family: 'Montserrat', sans-serif;
-            font-size: 15px; /* Input text más grande */
+            font-size: 15px; 
             border-radius: 4px;
             outline: none;
             transition: border 0.3s;
@@ -517,7 +515,7 @@
             background: linear-gradient(135deg, #1f0707 0%, #120303 100%);
             border: 1px solid var(--main-primary);
             border-radius: 12px;
-            padding: 25px 15px;
+            padding: 30px 15px;
             text-align: center;
             position: relative;
             overflow: hidden;
@@ -562,7 +560,7 @@
             color: var(--text-muted);
             letter-spacing: 4px;
             text-transform: uppercase;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
             border-bottom: 1px dashed rgba(214, 40, 40, 0.4);
             padding-bottom: 15px;
             font-weight: 600;
@@ -573,7 +571,7 @@
         .ticket-footer {
             font-size: 11px;
             color: #ffb3b3;
-            margin-top: 15px;
+            margin-top: 20px;
             border-top: 1px dashed rgba(214, 40, 40, 0.4);
             padding-top: 15px;
             letter-spacing: 1px;
@@ -676,23 +674,18 @@
 </head>
 <body>
 
-    <!-- Capa de Fondo Estática -->
     <div id="fixed-bg"></div>
 
-    <!-- Contenedor para las chispas dinámicas -->
     <div id="fireflies-container"></div>
 
-    <!-- Audio de Fondo -->
     <audio id="bg-music" src="assets/song.mp3" loop></audio>
 
-    <!-- Botón Sticky de Música -->
     <button id="music-btn" onclick="toggleMusic()" aria-label="Reproducir/Pausar Música">
         <svg viewBox="0 0 24 24">
             <path d="M8 5v14l11-7z"/>
         </svg>
     </button>
 
-    <!-- Pantalla del Sobre -->
     <div id="envelope-screen">
         <div class="envelope-wrapper" onclick="openEnvelope()">
             <div class="front-flap"></div>
@@ -707,12 +700,10 @@
         </div>
     </div>
 
-    <!-- Contenido de la Invitación Principal -->
     <main id="main-invitation">
         
         <div class="invitation-frame">
             <div class="lotus-header">
-                <!-- Corona / Estrella -->
                 <svg viewBox="0 0 24 24">
                     <path d="M5 16L3 5L8.5 10L12 4L15.5 10L21 5L19 16H5M19 19C19 19.55 18.55 20 18 20H6C5.45 20 5 19.55 5 19V18H19V19Z"/>
                 </svg>
@@ -725,16 +716,13 @@
                 "Hoy celebro el inicio de una nueva etapa, agradeciendo a Dios por la vida y a mi familia por acompañarme en cada paso del camino."
             </p>
 
-            <!-- Foto 1 -->
             <img src="assets/foto1.jpg" alt="Angel Issac" class="invitation-photo">
 
-            <!-- Sección de Fecha Principal -->
             <div class="info-block">
                 <div class="info-label">Fecha del Evento</div>
                 <div class="info-value-main" style="color: var(--main-primary);">12 de Septiembre</div>
             </div>
 
-            <!-- Cuenta Regresiva -->
             <div class="countdown-container">
                 <div class="countdown-box">
                     <div class="countdown-number" id="days">00</div>
@@ -754,7 +742,6 @@
                 </div>
             </div>
 
-            <!-- Widget Calendario (Septiembre 2026) -->
             <div class="calendar-container">
                 <div class="calendar-month">Septiembre</div>
                 <div class="calendar-grid">
@@ -809,25 +796,21 @@
 
             <div class="info-grid">
                 
-                <!-- Padres -->
                 <div class="info-block">
                     <div class="info-label">Con el amor de mi madre</div>
                     <div class="names-list">Yadira Isabel Velazquez Alonso</div>
                 </div>
 
-                <!-- Abuelos -->
                 <div class="info-block" style="margin-top: 20px;">
                     <div class="info-label">Y mis abuelos</div>
                     <div class="names-list">José Velazquez Ramirez</div>
                     <div class="names-list">Guadalupe Alonso Pineda</div>
                 </div>
 
-                <!-- Foto 2 -->
                 <img src="assets/foto2.jpg" alt="Angel Sesión" class="invitation-photo" style="margin-top: 30px;">
 
                 <div class="divider"></div>
 
-                <!-- Ceremonia Religiosa -->
                 <div class="info-block">
                     <div class="info-label">Ceremonia Religiosa</div>
                     <div class="names-list">Parroquia María Reina Diocesis de Nezahualcoyotl</div>
@@ -839,19 +822,16 @@
                     <a href="https://maps.app.goo.gl/3MAyQYkbKDFarCMq7" target="_blank" class="btn-gold" style="width: auto;">Abrir en GPS</a>
                 </div>
 
-                <!-- Foto 3 -->
                 <img src="assets/foto3.jpg" alt="Angel Detalles" class="invitation-photo" style="margin-top: 30px;">
 
                 <div class="divider"></div>
 
-                <!-- Recepción -->
                 <div class="info-block">
                     <div class="info-label">Recepción</div>
                     <div class="names-list">Salón de Fiestas Terraza Mirage</div>
                     <div class="names-sub">Bosques de los Continentes 4, Bosques de Aragon</div>
                     <div class="names-list" style="font-size: 24px; color: var(--main-primary); margin: 15px 0; font-weight: bold;">7:00 p.m.</div>
                     
-                    <!-- Valet Parking Destacado -->
                     <div style="background: rgba(255,255,255,0.05); border: 1px solid rgba(214,40,40,0.5); border-radius: 6px; padding: 10px; margin: 15px 0;">
                         <div style="font-family: 'Montserrat', sans-serif; font-size: 15px; color: #fff; font-weight: 600;">
                             Costo de Valet Parking: <span style="color: var(--main-primary); font-size: 18px;">$80 MXN</span>
@@ -864,12 +844,10 @@
                     <a href="https://maps.app.goo.gl/6YoP1y6W5z4MY3c6A" target="_blank" class="btn-gold" style="width: auto;">Abrir en GPS</a>
                 </div>
 
-                <!-- Foto 4 -->
                 <img src="assets/foto4.jpg" alt="Angel Estilo" class="invitation-photo" style="margin-top: 30px;">
 
                 <div class="divider"></div>
 
-                <!-- Código de Vestimenta -->
                 <div class="info-block">
                     <div class="info-label">Código de Vestimenta</div>
                     <div class="info-value-main" style="font-size: 26px; margin-bottom: 12px;">Formal</div>
@@ -881,7 +859,6 @@
 
                 <div class="divider"></div>
 
-                <!-- Mesa de Regalos -->
                 <div class="info-block">
                     <div class="info-label">Mesa de Regalos</div>
                     <svg viewBox="0 0 24 24" style="width: 50px; height: 50px; fill: var(--main-primary); margin: 10px 0; filter: drop-shadow(0 0 8px var(--magic-glow));">
@@ -896,12 +873,10 @@
                     </a>
                 </div>
 
-                <!-- Foto 5 -->
                 <img src="assets/foto5.jpg" alt="Angel Momentos" class="invitation-photo" style="margin-top: 30px;">
 
                 <div class="divider"></div>
 
-                <!-- Galería en Vivo -->
                 <div class="info-block">
                     <div class="info-label">Captura el Momento</div>
                     <svg viewBox="0 0 24 24" style="width: 50px; height: 50px; fill: var(--main-primary); margin: 10px 0; filter: drop-shadow(0 0 8px var(--magic-glow));">
@@ -918,7 +893,6 @@
 
                 <div class="divider"></div>
 
-                <!-- Mensaje Especial a Mamá y Abuelos -->
                 <div class="info-block" style="background: rgba(214, 40, 40, 0.08); padding: 35px 20px; border-radius: 12px; border: 1px dashed rgba(214,40,40,0.5); box-shadow: inset 0 0 15px rgba(0,0,0,0.5);">
                     <svg viewBox="0 0 24 24" style="width: 35px; height: 35px; fill: var(--main-primary); margin-bottom: 15px;">
                         <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
@@ -928,24 +902,15 @@
                     </p>
                 </div>
 
-                <!-- Foto 6 -->
                 <img src="assets/foto6.jpg" alt="Familia" class="invitation-photo" style="margin-top: 30px;">
 
                 <div class="divider"></div>
 
-                <!-- SECCIÓN DE PASES DIGITALES CON BUSCADOR PRIVADO -->
-                <div class="info-block" id="pases-section">
-                    <div class="info-label">Consulta tus Pases VIP</div>
-                    <div style="font-family: 'Montserrat', sans-serif; font-size: 14px; color: var(--text-light); margin-bottom: 20px;">Escribe tu nombre tal como aparece en tu invitación para descubrir tu boleto dorado.</div>
+                <div class="info-block" id="pases-section" style="display: none;">
+                    <div class="info-label">Tu Pase VIP</div>
+                    <div style="font-family: 'Montserrat', sans-serif; font-size: 14px; color: var(--text-light); margin-bottom: 25px;">Por favor presenta este boleto digital en la recepción.</div>
                     
-                    <div class="form-container" style="margin-bottom: 30px;">
-                        <input type="text" id="guest-search" class="form-input" placeholder="Ej. Familia Velazquez" onkeypress="if(event.key === 'Enter') searchPasses();">
-                        <button onclick="searchPasses()" class="btn-gold" style="font-size: 15px; padding: 15px;">Buscar mis pases</button>
-                        <div id="search-error" style="color: #ff6b6b; font-size: 14px; margin-top: 15px; display: none; font-weight: 500;">Nombre no encontrado. Intenta de nuevo.</div>
-                    </div>
-
-                    <!-- Boleto Visual (Oculto por defecto) -->
-                    <div id="ticket-container" style="display: none;">
+                    <div id="ticket-container">
                         <div class="digital-ticket">
                             <div class="ticket-header">
                                 <svg viewBox="0 0 24 24" style="width: 20px; height: 20px; fill: var(--main-primary); vertical-align: bottom; margin-right: 5px;"><path d="M12 2L15 9H22L16.5 13.5L18.5 21L12 17L5.5 21L7.5 13.5L2 9H9L12 2Z"/></svg>
@@ -954,9 +919,9 @@
                             </div>
                             
                             <div class="ticket-body">
-                                <div id="ticket-name" style="font-family: 'Cinzel', serif; font-size: 22px; color: var(--main-primary); margin-bottom: 15px; font-weight: bold; letter-spacing: 1px;"></div>
+                                <div style="font-family: 'Cinzel', serif; font-size: 22px; color: var(--main-primary); margin-bottom: 15px; font-weight: bold; letter-spacing: 1px;">INVITADO ESPECIAL</div>
                                 <div style="font-family: 'Montserrat', sans-serif; font-size: 13px; color: var(--text-light); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 10px;">Pases Asignados</div>
-                                <div id="ticket-count" style="font-family: 'Cinzel', serif; font-weight: 700; font-size: 48px; color: #fff; line-height: 1; text-shadow: 0 0 15px var(--magic-glow);"></div>
+                                <div id="ticket-count" style="font-family: 'Cinzel', serif; font-weight: 700; font-size: 48px; color: #fff; line-height: 1; text-shadow: 0 0 15px var(--magic-glow);">0</div>
                             </div>
                             
                             <div class="ticket-footer">
@@ -966,9 +931,8 @@
                     </div>
                 </div>
 
-                <div class="divider"></div>
+                <div class="divider" id="pases-divider" style="display: none;"></div>
 
-                <!-- Confirmación de Asistencia (RSVP) -->
                 <div class="info-block">
                     <div class="info-label">Confirmación de Asistencia</div>
                     <div style="font-family: 'Montserrat', sans-serif; font-size: 14px; color: var(--text-light); margin-bottom: 20px;">Por favor, confirma tu asistencia lo antes posible.</div>
@@ -989,7 +953,6 @@
 
                 <div class="divider"></div>
 
-                <!-- Muro de Deseos -->
                 <div class="info-block">
                     <div class="info-label">Deja un mensaje para Angel</div>
                     <div class="form-container">
@@ -1010,6 +973,34 @@
     </main>
 
     <script>
+        // Variables globales para el manejo dinámico de pases
+        let pasesAsignados = 0;
+
+        document.addEventListener("DOMContentLoaded", () => {
+            // Lógica para leer el parámetro '?p=' de la URL
+            const urlParams = new URLSearchParams(window.location.search);
+            let parametroPases = urlParams.get('p') || urlParams.get('pases');
+
+            // Convertir a número entero
+            if (parametroPases && !isNaN(parametroPases)) {
+                pasesAsignados = parseInt(parametroPases);
+            }
+
+            // Si hay un número válido de pases (ej. entre 1 y 10), mostramos la sección
+            if (pasesAsignados > 0) {
+                document.getElementById('pases-section').style.display = 'block';
+                document.getElementById('pases-divider').style.display = 'block';
+                
+                // Actualizar el número gigante en el boleto
+                document.getElementById('ticket-count').innerText = pasesAsignados + (pasesAsignados === 1 ? " PASE" : " PASES");
+                
+                // Limitar el input del RSVP al número máximo del link
+                const rsvpGuestsInput = document.getElementById('rsvp-guests');
+                rsvpGuestsInput.max = pasesAsignados;
+                rsvpGuestsInput.placeholder = `¿Cuántas personas asistirán? (Máximo ${pasesAsignados})`;
+            }
+        });
+
         // Lógica de Audio
         const bgMusic = document.getElementById('bg-music');
         const musicBtn = document.getElementById('music-btn');
@@ -1051,7 +1042,7 @@
             }, 1200);
         }
 
-        // Sistema de Partículas/Chispas (Color Rojo)
+        // Sistema de Partículas/Chispas
         function createFireflies() {
             const container = document.getElementById('fireflies-container');
             const count = 35; 
@@ -1076,7 +1067,7 @@
             }
         }
 
-        // Lógica de Cuenta Regresiva (12 de Septiembre 2026, a las 17:00:00 - Ajustado a hora de Misa)
+        // Lógica de Cuenta Regresiva (12 de Septiembre 2026 a las 17:00:00)
         const eventDate = new Date("2026/09/12 17:00:00").getTime();
 
         const countdownInterval = setInterval(() => {
@@ -1103,81 +1094,7 @@
             document.getElementById("seconds").innerText = seconds < 10 ? "0" + seconds : seconds;
         }, 1000);
 
-        // --- SISTEMA DE PASES DIGITALES (BUSCADOR) ---
-        const guestData = {
-            "Familia Velazquez": 4, 
-            "Familia Calderón": 5, 
-            "Padrinos de Velación": 2, 
-            "Tia Mary": 2, 
-            "Jose Velazquez": 2,
-            "Guadalupe Alonso": 2
-        };
-
-        // Función para quitar acentos y normalizar texto
-        function normalizeString(str) {
-            return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().trim();
-        }
-
-        // Mostrar Pases y Animar Ticket
-        function searchPasses() {
-            const searchInput = document.getElementById("guest-search").value;
-            const errorMsg = document.getElementById("search-error");
-            const container = document.getElementById("ticket-container");
-            const nameEl = document.getElementById("ticket-name");
-            const countEl = document.getElementById("ticket-count");
-            const ticketElement = document.querySelector(".digital-ticket");
-
-            if (searchInput.length < 2) {
-                errorMsg.style.display = "block";
-                errorMsg.textContent = "Por favor, escribe un nombre válido.";
-                container.style.display = "none";
-                return;
-            }
-
-            const normalizedInput = normalizeString(searchInput);
-            let foundName = null;
-            let foundPasses = 0;
-
-            for (const [name, passes] of Object.entries(guestData)) {
-                if (normalizeString(name) === normalizedInput) {
-                    foundName = name;
-                    foundPasses = passes;
-                    break;
-                }
-            }
-
-            if (!foundName) {
-                const matches = [];
-                for (const [name, passes] of Object.entries(guestData)) {
-                    if (normalizeString(name).includes(normalizedInput)) {
-                        matches.push({name, passes});
-                    }
-                }
-                
-                if (matches.length === 1) {
-                    foundName = matches[0].name;
-                    foundPasses = matches[0].passes;
-                }
-            }
-            
-            if (foundName) {
-                errorMsg.style.display = "none";
-                nameEl.textContent = foundName;
-                countEl.textContent = foundPasses + (foundPasses == 1 ? " PASE" : " PASES");
-                
-                container.style.display = "block";
-                
-                ticketElement.style.animation = 'none';
-                ticketElement.offsetHeight; 
-                ticketElement.style.animation = null; 
-            } else {
-                errorMsg.style.display = "block";
-                errorMsg.textContent = "No encontramos este nombre. Intenta con un solo nombre y tu primer apellido.";
-                container.style.display = "none";
-            }
-        }
-
-        // Mostrar/Ocultar campo de cantidad de personas
+        // Mostrar/Ocultar campo de cantidad de personas para confirmar
         function toggleGuestInput() {
             const status = document.getElementById("rsvp-status").value;
             const guestInput = document.getElementById("rsvp-guests");
@@ -1213,7 +1130,14 @@
                     alert("Por favor, ingresa un número válido de personas que asistirán.");
                     return;
                 }
-                message = encodeURIComponent(`¡Hola! Soy ${name}. Sí, confirmo mi asistencia a los XV años de Angel Issac. Asistiremos ${guests} personas de las asignadas a nuestro pase.`);
+                
+                // Validación estricta para evitar que confirmen de más
+                if (pasesAsignados > 0 && parseInt(guests) > pasesAsignados) {
+                    alert(`El límite máximo asignado en tu pase es de ${pasesAsignados} persona(s).`);
+                    return;
+                }
+
+                message = encodeURIComponent(`¡Hola! Soy ${name}. Sí, confirmo mi asistencia a los XV años de Angel Issac. Asistiremos ${guests} persona(s) de nuestro pase asignado.`);
             } else {
                 message = encodeURIComponent(`¡Hola! Soy ${name}. Lamentablemente no podré asistir a los XV años de Angel Issac. ¡Muchas gracias por la invitación!`);
             }
